@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Payment</title>
+<link rel="stylesheet" href="static/style.css"></head>
+<body>
+  <main>
+    <form id="payment-form">
+      <label><input type="radio" name="payment_method" value="mobile_money"> Mobile Money</label><br>
+      <label><input type="radio" name="payment_method" value="card"> Card</label><br><br>
+      <button type="submit">Pay</button>
+    </form>
+    <div id="payment-confirmation-section" style="display:none;">
+      <h2>Payment Successful</h2>
+      <p>Transaction ID: <span id="receipt-txn"></span></p>
+      <p>Date: <span id="receipt-date"></span></p>
+    </div>
+  </main>
+  <script src="static/script.js"></script>
+</body>
+</html>

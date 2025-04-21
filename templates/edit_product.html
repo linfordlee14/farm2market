@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Product</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <h2>Edit Product</h2>
+    <form id="edit-product-form">
+      <input type="hidden" id="product_id">
+      <input type="text" id="product_name" placeholder="Product Name" required><br>
+      <textarea id="description" placeholder="Description"></textarea><br>
+      <input type="number" id="price" placeholder="Price" required><br>
+      <input type="number" id="quantity" placeholder="Quantity" required><br>
+      <input type="file" id="product_image" accept="image/*"><br>
+      <img id="product-image-preview" style="max-width: 200px; display: none;"><br>
+      <button type="submit">Update Product</button>
+    </form>
+  </main>
+  <script src="/static/script.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    const form = document.getElementById('edit-product-form');
+
+    fetch('/api/products/' + productId)
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) return alert(data.error);
+        document.getElementById('product_id').value = data.product_id;
+        document.getElementById('product_name').value = data.product_name;
+        document.getElementById('description').value = data.description;
+        document.getElementById('price').value = data.price;
+        document.getElementById('quantity').value = data.quantity;
+      });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const product = {
+        product_name: document.getElementById('product_name').value,
+        description: document.getElementById('description').value,
+        price: parseFloat(document.getElementById('price').value),
+        quantity: parseInt(document.getElementById('quantity').value),
+        image: 'placeholder.jpg'
+      };
+      const res = await fetch('/api/products/' + productId, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(product)
+      });
+      const data = await res.json();
+      alert(data.message);
+      if (res.ok) window.location.href = '/farmer';
+    });
+  </script>
+</body>
+</html>

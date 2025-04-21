@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Register</title>
+<link rel="stylesheet" href="static/style.css"></head>
+<body>
+  <main class="auth-form">
+    <h2>Register</h2>
+    <form id="registration-form">
+      <input type="text" id="name" placeholder="Name" required><br>
+      <input type="text" id="email" placeholder="Email/Phone" required><br>
+      <input type="password" id="password" placeholder="Password" required><br>
+      <select id="user_type" required>
+        <option value="">--Select--</option>
+        <option value="farmer">Farmer</option>
+        <option value="buyer">Buyer</option>
+      </select><br>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login here</a></p>
+  </main>
+  <script src="static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Farmer Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body onload="loadFarmerProducts(1)">
+  <header>
+
+  </header>
+
+  <main>
+    <section class="dashboard-container">
+      <h2>Welcome, Farmer</h2>
+      <div class="card">
+        <div class="card-header">
+          <h3>My Product Listings</h3>
+          <a class="btn" href="/add_product">+ Add New Product</a>
+        </div>
+        <ul id="my-product-list" class="product-list">
+          <!-- Product cards will be injected here -->
+        </ul>
+      </div>
+    </section>
+  </main>
+  <script src="/static/script.js"></script>
+  <script>
+    const farmerId = 1; // Replace with real session ID later
+    fetch(`/api/products/farmer/1`)
+  .then(res => res.json())
+  .then(products => {
+    const list = document.getElementById('my-product-list');
+    if (products.length === 0) {
+      list.innerHTML = '<li>No products yet</li>';
+    } else {
+      list.innerHTML = products.map(p => `
+        <li>
+          <strong>${p.product_name}</strong><br>
+          ${p.description}<br>
+          Price: $${p.price} | Qty: ${p.quantity}<br>
+          <button onclick="location.href='/edit_product?id=${p.product_id}'">Edit</button>
+          <button onclick="deleteProduct(${p.product_id})">Delete</button>
+        </li>`).join('');
+    }
+  });
+
+function deleteProduct(id) {
+  if (confirm("Are you sure you want to delete this product?")) {
+    fetch('/api/products/' + id, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        location.reload();
+      });
+  }
+}
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buyer Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header><h1>Marketplace</h1></header>
+  <main>
+    <input type="text" id="search" placeholder="Search products..." />
+    <ul id="market-list"></ul>
+  </main>
+  <script src="/static/script.js"></script>
+  <script>
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(products => {
+        const list = document.getElementById('market-list');
+        const search = document.getElementById('search');
+        const render = (items) => {
+          list.innerHTML = items.map(p => \`
+            <li>
+              <strong>\${p.product_name}</strong><br>
+              \${p.description}<br>
+              Price: \$\${p.price} | Qty: \${p.quantity}
+            </li>
+          \`).join('');
+        };
+        render(products);
+        search.addEventListener('input', () => {
+          const q = search.value.toLowerCase();
+          const filtered = products.filter(p => p.product_name.toLowerCase().includes(q));
+          render(filtered);
+        });
+      });
+  </script>
+</body>
+</html>

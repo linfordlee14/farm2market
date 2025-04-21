@@ -1,0 +1,167 @@
+/* Basic reset and typography */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+
+/* Headers */
+
+h1,
+h2 {
+    text-align: center;
+    color: #2d6a4f;
+}
+
+
+/* Layout containers */
+
+.landing-container {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.auth-form,
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Buttons */
+
+button {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #40916c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2d6a4f;
+}
+
+
+/* Inputs and form elements */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+
+/* Footer styling */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2d6a4f;
+    color: #fff;
+    margin-top: 40px;
+}
+
+
+/* List styling */
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #d8f3dc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+
+/* CTA Buttons on Landing Page */
+
+.cta-buttons button {
+    width: 150px;
+    margin: 10px;
+}
+
+
+/* Image preview styling */
+
+#product-image-preview {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+
+/* Toast notifications */
+
+.custom-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #40916c;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    opacity: 0.95;
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 600px) {
+    .auth-form,
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+    button {
+        width: 100%;
+    }
+}
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.4em 1em;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+  
+  .product-list li {
+    margin-bottom: 1em;
+    background: #f9f9f9;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
