@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Add Product</title>
+<link rel="stylesheet" href="static/style.css"></head>
+<body>
+  <main>
+    <form id="add-product-form">
+      <input type="hidden" id="farmer_id_input" value="1">
+      <input type="text" id="product_name" placeholder="Product Name" required><br>
+      <textarea id="description" placeholder="Description"></textarea><br>
+      <input type="number" id="price" placeholder="Price" required><br>
+      <input type="number" id="quantity" placeholder="Quantity" required><br>
+      <input type="file" id="product_image" accept="image/*"><br>
+      <img id="product-image-preview" style="display:none; max-width:200px;"><br>
+      <button type="submit">Save Listing</button>
+    </form>
+  </main>
+  <script src="static/script.js"></script>
+</body>
+</html>
