@@ -198,7 +198,10 @@ def get_orders_by_buyer(buyer_id):
 # ----------------------
 # App Entry
 # ----------------------
-if __name__ == '__main__':
+@app.before_first_request
+def initialize_database():
     init_db()
     upgrade_orders_table()
+
+if __name__ == '__main__':
     app.run(debug=True)
